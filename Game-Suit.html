@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Game Suit</title>
+</head>
+<body>
+  <h2>Game Suit</h2>
+  <button onclick="play('gunting')">Gunting</button>
+  <button onclick="play('batu')">Batu</button>
+  <button onclick="play('kertas')">Kertas</button>
+  
+  <script type="text/javascript" charset="utf-8">
+    const logic = {
+      gunting: { batu: 0, kertas: 1 },
+      batu: { kertas: 0, gunting: 1 },
+      kertas: { gunting: 0, batu: 1 },
+    };
+    
+    function play(user) {
+      const keys = Object.keys(logic);
+      const com = keys[Math.floor(Math.random() * 3)];
+      const result = logic[user] [com];
+      let text = `Kamu ${user}, Komputer ${com}, Kamu `;
+      
+      result === 0
+       ? (text += "kalah")
+       : result === 1
+       ? (text += "menang")
+       : (text += "seri")
+       
+      alert(`${text}`)
+    }
+  </script>
+</body>
+</html>
